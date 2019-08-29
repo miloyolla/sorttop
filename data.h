@@ -9,10 +9,10 @@ struct data{
     char autoInfra[32];
     char cpfCnpj[32];
     char razSocial[128];
-}
+};
 struct index{
-    campo[128];
+    char campo[128];
     int index;
-}
+};
 
 #endif

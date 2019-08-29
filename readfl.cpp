@@ -48,10 +48,7 @@ void ReadCsv(char *path, vector<data> &dataVec)
     }
 
     fclose(fp);
-    // o buffer ja contem todo o arquivo de texto na memoria
-    // apartir daqui eu ja posso trabalhar com ele
     fillVector(buffer, dataVec);
-
     free(buffer);
 }
 void fillVector(char *buffer, vector<data> &dataVec)

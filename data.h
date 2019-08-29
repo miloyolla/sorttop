@@ -2,13 +2,13 @@
 #define DATA_STRUCT
 
 struct data{
-    char[4] ano;
-    char[64] statusProc;
-    char[32] superintend;
-    char[32] numeroProc; 
-    char[32] autoInfra;
-    char[32] cpfCnpj;
-    char[128] razSocial;
+    char ano[4];
+    char statusProc[64];
+    char superintend[32];
+    char numeroProc[32]; 
+    char autoInfra[32];
+    char cpfCnpj[32];
+    char razSocial[128];
 }
 struct index{
     campo[128];

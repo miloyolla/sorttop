@@ -3,10 +3,13 @@
 
 #include <cstdio>
 #include <cstdlib>
+#include <vector>
+#include "data.h"
 
+using namespace std;
 namespace csvio
 {
-    void ReadCsv(char *path);
+void ReadCsv(char *path, vector<data> &dataVec);
 }
 
 #endif

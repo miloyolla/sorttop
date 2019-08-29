@@ -2,7 +2,10 @@
 
 namespace csvio
 {
-void ReadCsv(char *path)
+
+void fillVector(char *buffer, vector<data> dataVec);
+
+void ReadCsv(char *path, vector<data> &dataVec)
 {
     FILE *fp;
     char *buffer;
@@ -32,7 +35,18 @@ void ReadCsv(char *path)
     }
 
     fclose(fp);
-    printf("%s", buffer);
+    // o buffer ja contem todo o arquivo de texto na memoria
+    // apartir daqui eu ja posso trabalhar com ele
+    fillVector(buffer, dataVec);
+    
     free(buffer);
+}
+void fillVector(char *buffer, vector<data> dataVec)
+{
+    for (int i = 0; buffer[i]; i++)
+    {
+        printf("%c\n", buffer[i]);
+        // aqui entra o código de montar as estruturas
+    }
 }
 } // namespace csvio

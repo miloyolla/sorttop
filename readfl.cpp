@@ -14,9 +14,12 @@ enum dataFields
     vencimento,
     valorMultaApl
 };
-void strcp(char *src, char *dest);
+void strcp(char *src, char *dest, int strsize);
 
 void fillVector(char *buffer, vector<data> &dataVec);
+
+void fillIndexVector(vector<data> &dataVec , vector<index> &indVector);
+
 
 void ReadCsv(char *path, vector<data> &dataVec)
 {
@@ -68,50 +71,46 @@ void fillVector(char *buffer, vector<data> &dataVec)
             switch (field)
             {
             case ano:
-                strcp(str, data.ano);
+                strcp(str, data.ano, 4);
                 field = statusProc;
                 break;
             case statusProc:
-                strcp(str, data.statusProc);
+                strcp(str, data.statusProc,64);
                 field = superintend;
                 break;
             case superintend:
-                strcp(str, data.superintend);
+                strcp(str, data.superintend,32);
                 field = numeroProc;
                 break;
             case numeroProc:
-                strcp(str, data.numeroProc);
+                strcp(str, data.numeroProc,32);
                 field = autoInfra;
                 break;
             case autoInfra:
-                strcp(str, data.autoInfra);
+                strcp(str, data.autoInfra,32);
                 field = cpfCnpj;
                 break;
             case cpfCnpj:
-                strcp(str, data.cpfCnpj);
+                strcp(str, data.cpfCnpj,32);
                 field = razSocial;
                 break;
             case razSocial:
-                strcp(str, data.razSocial);
+                strcp(str, data.razSocial,128);
                 field = vencimento;
                 break;
             case vencimento:
-                strcp(str, data.vencimento);
+                strcp(str, data.vencimento,16);
                 field = valorMultaApl;
                 break;
-            case valorMultaApl:
-                strcp(str, data.valorMultaApl);
-                break;
+    
             }
             j = 0;
             break;
         case '\n':
-            strcp(str, data.valorMultaApl); // copia a ultima celula para a estrutura
+            strcp(str, data.valorMultaApl,32); // copia a ultima celula para a estrutura
             field = ano; // reseta o enumarator para o inicio da linha
             dataVec.push_back(data);
             //adicionar o data ao vector
-            break;
-            printf("achei uma nova linha\n");
             j = 0;
             break;
         default:
@@ -121,7 +120,7 @@ void fillVector(char *buffer, vector<data> &dataVec)
         }
     }
 }
-void strcp(char *src, char *dest)
+void strcp(char *src, char *dest, int strsize)
 {
     int i = 0;
     while (src[i] != '\0')
@@ -129,6 +128,10 @@ void strcp(char *src, char *dest)
         dest[i] = src[i];
         i++;
     }
-    dest[i + 1] = '\0';
+    while  (i > strsize )
+    {
+        i++;
+        dest[i] = '\0';
+    }
 }
 } // namespace csvio

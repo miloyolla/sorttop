@@ -2,8 +2,21 @@
 
 namespace csvio
 {
+enum dataFields
+{
+    ano,
+    statusProc,
+    superintend,
+    numeroProc,
+    autoInfra,
+    cpfCnpj,
+    razSocial,
+    vencimento,
+    valorMultaApl
+};
+void strcp(char *src, char *dest);
 
-void fillVector(char *buffer, vector<data> dataVec);
+void fillVector(char *buffer, vector<data> &dataVec);
 
 void ReadCsv(char *path, vector<data> &dataVec)
 {
@@ -38,15 +51,87 @@ void ReadCsv(char *path, vector<data> &dataVec)
     // o buffer ja contem todo o arquivo de texto na memoria
     // apartir daqui eu ja posso trabalhar com ele
     fillVector(buffer, dataVec);
-    
+
     free(buffer);
 }
-void fillVector(char *buffer, vector<data> dataVec)
+void fillVector(char *buffer, vector<data> &dataVec)
 {
+
+    data data;
+    char str[128];
+    int j = 0;
+    dataFields field = ano;
     for (int i = 0; buffer[i]; i++)
     {
-        printf("%c\n", buffer[i]);
-        // aqui entra o código de montar as estruturas
+        // a primeira struct do vector é o identificador de cada coluna no csv
+        switch (buffer[i])
+        {
+        case ';':
+            printf("inicio de uma nova celula\n");
+            switch (field)
+            {
+            case ano:
+                strcp(str, data.ano);
+                field = statusProc;
+                break;
+            case statusProc:
+                strcp(str, data.statusProc);
+                field = superintend;
+                break;
+            case superintend:
+                strcp(str, data.superintend);
+                field = numeroProc;
+                break;
+            case numeroProc:
+                strcp(str, data.numeroProc);
+                field = autoInfra;
+                break;
+            case autoInfra:
+                strcp(str, data.autoInfra);
+                field = cpfCnpj;
+                break;
+            case cpfCnpj:
+                strcp(str, data.cpfCnpj);
+                field = razSocial;
+                break;
+            case razSocial:
+                strcp(str, data.razSocial);
+                field = vencimento;
+                break;
+            case vencimento:
+                strcp(str, data.vencimento);
+                field = valorMultaApl;
+                break;
+            case valorMultaApl:
+                strcp(str, data.valorMultaApl);
+                break;
+            }
+            j = 0;
+            break;
+        case '\n':
+            strcp(str, data.valorMultaApl); // copia a ultima celula para a estrutura
+            field = ano; // reseta o enumarator para o inicio da linha
+            dataVec.push_back(data);
+            //adicionar o data ao vector
+            break;
+            printf("achei uma nova linha\n");
+            j = 0;
+            break;
+        default:
+            buffer[i] = str[j];
+            // adiciona o dado a um campo do data
+            break;
+        }
     }
+}
+void strcp(char *src, char *dest)
+{
+    int i = 0;
+    while (src[i] != '\0')
+    {
+        dest[i] = src[i];
+        i++;
+    }
+    dest[i + 1] = '\0';
 }
 } // namespace csvio

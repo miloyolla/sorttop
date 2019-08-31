@@ -9,8 +9,21 @@
 
 namespace csvio
 {
-    void ReadCsv(const std::string& path, std::vector<data> &dataVec);
-    void fillIndex(std::vector<index> &indexVec, const std::vector<data> &dataVec);
-}
+enum dataFields
+{
+    ano,
+    statusProc,
+    superintend,
+    numeroProc,
+    autoInfra,
+    cpfCnpj,
+    razSocial,
+    vencimento,
+    valorMultaApl
+};
+
+void ReadCsv(const std::string &path, std::vector<data> &dataVec);
+void fillIndex(std::vector<index> &indexVec, const std::vector<data> &dataVec, dataFields field);
+} // namespace csvio
 
 #endif

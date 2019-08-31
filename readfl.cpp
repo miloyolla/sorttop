@@ -8,18 +8,6 @@
 namespace csvio
 {
 
-enum dataFields
-{
-    ano,
-    statusProc,
-    superintend,
-    numeroProc,
-    autoInfra,
-    cpfCnpj,
-    razSocial,
-    vencimento,
-    valorMultaApl
-};
 
 void ReadCsv(const std::string &path, std::vector<data> &dataVec)
 {
@@ -87,6 +75,7 @@ void ReadCsv(const std::string &path, std::vector<data> &dataVec)
         }
         dataVec.push_back(data);
     }
+    std::cout << "arquivo lido com sucesso." << std::endl;
 }
 void fillIndex(std::vector<index> &indexVec, const std::vector<data> &dataVec, dataFields field)
 {
@@ -95,7 +84,7 @@ void fillIndex(std::vector<index> &indexVec, const std::vector<data> &dataVec, d
     switch (field)
     {
     case ano:
-        for (int i = 0; i < dataVec.size; i++)
+        for (int i = 0; i < dataVec.size(); i++)
         {
             index.campo = dataVec[i].ano;
             index.index = i;
@@ -103,7 +92,7 @@ void fillIndex(std::vector<index> &indexVec, const std::vector<data> &dataVec, d
         }
         return;
     case statusProc:
-        for (int i = 0; i < dataVec.size; i++)
+        for (int i = 0; i < dataVec.size(); i++)
         {
             index.campo = dataVec[i].statusProc;
             index.index = i;
@@ -111,7 +100,7 @@ void fillIndex(std::vector<index> &indexVec, const std::vector<data> &dataVec, d
         }
         return;
     case superintend:
-        for (int i = 0; i < dataVec.size; i++)
+        for (int i = 0; i < dataVec.size(); i++)
         {
             index.campo = dataVec[i].superintend;
             index.index = i;
@@ -119,7 +108,7 @@ void fillIndex(std::vector<index> &indexVec, const std::vector<data> &dataVec, d
         }
         return;
     case numeroProc:
-        for (int i = 0; i < dataVec.size; i++)
+        for (int i = 0; i < dataVec.size(); i++)
         {
             index.campo = dataVec[i].numeroProc;
             index.index = i;
@@ -127,7 +116,7 @@ void fillIndex(std::vector<index> &indexVec, const std::vector<data> &dataVec, d
         }
         return;
     case autoInfra:
-        for (int i = 0; i < dataVec.size; i++)
+        for (int i = 0; i < dataVec.size(); i++)
         {
             index.campo = dataVec[i].autoInfra;
             index.index = i;
@@ -135,7 +124,7 @@ void fillIndex(std::vector<index> &indexVec, const std::vector<data> &dataVec, d
         }
         return;
     case cpfCnpj:
-        for (int i = 0; i < dataVec.size; i++)
+        for (int i = 0; i < dataVec.size(); i++)
         {
             index.campo = dataVec[i].cpfCnpj;
             index.index = i;
@@ -143,7 +132,7 @@ void fillIndex(std::vector<index> &indexVec, const std::vector<data> &dataVec, d
         }
         return;
     case razSocial:
-        for (int i = 0; i < dataVec.size; i++)
+        for (int i = 0; i < dataVec.size(); i++)
         {
             index.campo = dataVec[i].razSocial;
             index.index = i;
@@ -151,7 +140,7 @@ void fillIndex(std::vector<index> &indexVec, const std::vector<data> &dataVec, d
         }
         return;
     case vencimento:
-        for (int i = 0; i < dataVec.size; i++)
+        for (int i = 0; i < dataVec.size(); i++)
         {
             index.campo = dataVec[i].vencimento;
             index.index = i;
@@ -159,7 +148,7 @@ void fillIndex(std::vector<index> &indexVec, const std::vector<data> &dataVec, d
         }
         return;
     case valorMultaApl:
-        for (int i = 0; i < dataVec.size; i++)
+        for (int i = 0; i < dataVec.size(); i++)
         {
             index.campo = dataVec[i].valorMultaApl;
             index.index = i;
@@ -169,3 +158,4 @@ void fillIndex(std::vector<index> &indexVec, const std::vector<data> &dataVec, d
     }
 }
 } // namespace csvio
+

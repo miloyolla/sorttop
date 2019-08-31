@@ -20,7 +20,7 @@ namespace csvio
     };
     struct index
     {
-        std::string campo[128];
+        std::string campo;
         int index;
     };
 } // namespace csvio

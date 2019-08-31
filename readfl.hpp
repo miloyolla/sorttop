@@ -4,12 +4,12 @@
 #include <cstdio>
 #include <cstdlib>
 #include <vector>
-#include "data.h"
+#include <string.h>
+#include "data.hpp"
 
-using namespace std;
 namespace csvio
 {
-void ReadCsv(char *path, vector<data> &dataVec);
+    void ReadCsv(const std::string& path, std::vector<data> &dataVec);
 }
 
 #endif

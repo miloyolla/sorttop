@@ -10,6 +10,8 @@
 #include "data.hpp"
 #include "readfl.hpp"
 
+void printField(const std::vector<csvio::data> &dataVec);
+
 int main(int argc, char *argv[])
 {
     std::vector<csvio::data> dataVec;
@@ -17,8 +19,9 @@ int main(int argc, char *argv[])
 
     char option;
     bool reploop = true;
+    std::string filePath;
 
-    if (argc > 2)
+    if (argc > 2) 
     {
         csvio::ReadCsv(argv[1], dataVec);
     }
@@ -32,18 +35,37 @@ int main(int argc, char *argv[])
                   << std::endl
                   << "c - escolher campo de ordenação. "
                   << std::endl
+                  << "m - ordenar com merge sort"
+                  << std::endl
+                  << "b - ordenar com bubble sort"
+                  << std::endl
+                  << "p - imprimir o arquivo"
+                  << std::endl
                   << "s - sair."
                   << std::endl
                   << "------------------------------------------------"
                   << std::endl
-                  << "Entre com sua opção:()"
-                  << std::endl;
+                  << "Entre com uma opção:(a/c/m/b/s): ";
         std::cin >> option;
         switch (option)
         {
         case 'a':
+            std::cout << "Digite o caminho para o arquivo: ";
+            std::cin >> filePath;
+            csvio::ReadCsv(filePath, dataVec);
             break;
+        case 'c':
 
+            break;
+        case 'm':
+
+            break;
+        case 'b':
+
+            break;
+        case 'p':
+            printField(dataVec);
+            break;
         case 's':
             reploop = false;
             break;
@@ -57,11 +79,16 @@ int main(int argc, char *argv[])
     /* 
     
 
-    std::cout << "linhas lidas: " << dataVec.size() << std::endl;
-    for (auto &data : dataVec)
-        std::cout << data.razSocial << " " << data.cpfCnpj << std::endl;
 
     */
 
     return 0;
+}
+
+void printField(const std::vector<csvio::data> &dataVec)
+{
+    std::cout << "linhas lidas: " << dataVec.size() << std::endl;
+    for (auto &data : dataVec)
+        std::cout << data.razSocial << " " << data.cpfCnpj << std::endl;
+
 }

@@ -1,5 +1,4 @@
 #include "readfl.hpp"
-// Rayner stuff:
 #include <fstream>
 #include <iostream>
 #include <string>
@@ -9,14 +8,13 @@ namespace csvio
 {
 
 
-void ReadCsv(const std::string &path, std::vector<data> &dataVec)
+bool ReadCsv(const std::string &path, std::vector<data> &dataVec)
 {
-    // by Rayner
     std::ifstream stream(path);
     if (!stream)
     {
         std::cerr << "Erro ao abrir o arquivo" << std::endl;
-        return;
+        return false;
     }
 
     std::string fileLine;
@@ -76,6 +74,7 @@ void ReadCsv(const std::string &path, std::vector<data> &dataVec)
         dataVec.push_back(data);
     }
     std::cout << "arquivo lido com sucesso." << std::endl;
+    return true;
 }
 void fillIndex(std::vector<index> &indexVec, const std::vector<data> &dataVec, dataFields field)
 {

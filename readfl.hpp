@@ -22,7 +22,7 @@ enum dataFields
     valorMultaApl
 };
 
-void ReadCsv(const std::string &path, std::vector<data> &dataVec);
+bool ReadCsv(const std::string &path, std::vector<data> &dataVec);
 void fillIndex(std::vector<index> &indexVec, const std::vector<data> &dataVec, dataFields field);
 } // namespace csvio
 

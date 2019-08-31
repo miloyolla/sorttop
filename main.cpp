@@ -12,6 +12,8 @@
 
 void printField(const std::vector<csvio::data> &dataVec);
 
+void chooseField(const std::vector<csvio::index> &index);
+
 int main(int argc, char *argv[])
 {
     std::vector<csvio::data> dataVec;
@@ -21,7 +23,7 @@ int main(int argc, char *argv[])
     bool reploop = true;
     std::string filePath;
 
-    if (argc > 2) 
+    if (argc > 2)
     {
         csvio::ReadCsv(argv[1], dataVec);
     }
@@ -55,7 +57,7 @@ int main(int argc, char *argv[])
             csvio::ReadCsv(filePath, dataVec);
             break;
         case 'c':
-
+            chooseField(index);
             break;
         case 'm':
 
@@ -84,11 +86,85 @@ int main(int argc, char *argv[])
 
     return 0;
 }
+// menu para escolher o campo de ordenaçao
+void chooseField(const std::vector<csvio::index> &index)
+{
+    bool reploop = true;
+    char option;
+    do
+    {
+        std::cout << "##################################"
+                  << std::endl
+                  << "escolha um campo de ordenação:"
+                  << std::endl
+                  << "a - ano."
+                  << std::endl
+                  << "p - status do processo."
+                  << std::endl
+                  << "i - super intendência."
+                  << std::endl
+                  << "n - numero do processo."
+                  << std::endl
+                  << "f - auto infração."
+                  << std::endl
+                  << "c - cpf / cnpj."
+                  << std::endl
+                  << "r - razão social."
+                  << std::endl
+                  << "v - vencimento."
+                  << std::endl
+                  << "m - valor da multa aplicada."
+                  << std::endl
+                  << "s - sair"
+                  << "##################################"
+                  << std::endl
+                  << "Entre com uma opção(a/p/i/n/f/c/r/v/m/s):";
+
+        switch (option)
+        {
+        case 'a':
+
+            break;
+        case 'p':
+
+            break;
+        case 'i':
+
+            break;
+        case 'n':
+
+            break;
+        case 'f':
+
+            break;
+        case 'c':
+
+            break;
+        case 'r':
+
+            break;
+        case 'v':
+
+            break;
+        case 'm':
+
+            break;
+
+        case 's':
+            reploop = false;
+            break;
+
+        default:
+            std::cout << "opção inválida" << std::endl;
+            break;
+        }
+
+    } while (reploop);
+}
 
 void printField(const std::vector<csvio::data> &dataVec)
 {
     std::cout << "linhas lidas: " << dataVec.size() << std::endl;
     for (auto &data : dataVec)
         std::cout << data.razSocial << " " << data.cpfCnpj << std::endl;
-
 }

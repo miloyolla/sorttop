@@ -10,6 +10,7 @@
 namespace csvio
 {
     void ReadCsv(const std::string& path, std::vector<data> &dataVec);
+    void fillIndex(std::vector<index> &indexVec, const std::vector<data> &dataVec);
 }
 
 #endif

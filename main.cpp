@@ -1,9 +1,12 @@
 /* 
-    ARQUIVO DE DESENVOLVIMENTO
 
-    CONTEM A FUNÇAO MAIN DE TESTES! duh
+
+
+
 
 */
+
+
 
 #include <iostream>
 #include <vector>
@@ -60,13 +63,35 @@ int main(int argc, char *argv[])
             hasFile = csvio::ReadCsv(filePath, dataVec);
             break;
         case 'c':
+            if (hasFile)
+            {
             hasField = chooseField(index, dataVec);
+            }
+            else
+            {
+            std::cout << "nenhum arquivo lido. " << std::endl;
+            }
+        
             break;
         case 'm':
-
+            if (hasField)
+            {
+                std::cout << "Ainda Não implementado.";
+            }
+            else
+            {
+                std::cout << "Nenhum campo selecionado.";
+            }
             break;
         case 'b':
-
+            if (hasField)
+            {
+                std::cout << "Ainda Não implementado.";
+            }
+            else
+            {
+                std::cout << "Nenhum campo selecionado.";
+            }
             break;
         case 'p':
             if (hasField)

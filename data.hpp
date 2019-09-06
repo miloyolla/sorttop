@@ -1,3 +1,12 @@
+/////////////////////////////////////////////////////
+//    UFRJ - IM/IMA
+//    TMA-B
+//    Mileny Loyolla
+//    Vitor Pavani
+//    Rodrigo Chueri
+//    DATA: 06/09/2019
+/////////////////////////////////////////////////////
+
 #ifndef DATA_STRUCT
 #define DATA_STRUCT
 

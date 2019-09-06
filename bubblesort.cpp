@@ -1,11 +1,12 @@
-/* UFRJ - IM/IMA
-TMA-B
-Mileny Loyolla
-Vitor Pavani
-Rodrigo Chueri
+/////////////////////////////////////////////////////
+//    UFRJ - IM/IMA
+//    TMA-B
+//    Mileny Loyolla
+//    Vitor Pavani
+//    Rodrigo Chueri
+//    DATA: 06/09/2019
+/////////////////////////////////////////////////////
 
-DATA: 01/03/2019
-*/
 #include "bubble.hpp"
 namespace csvio 
 {

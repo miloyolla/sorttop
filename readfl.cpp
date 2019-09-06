@@ -8,7 +8,7 @@ namespace csvio
 {
 
 
-bool ReadCsv(const std::string &path, std::vector<data> &dataVec)
+bool ReadCsv(const std::string &path, std::vector<data> &dataVec, char separator)
 {
     std::ifstream stream(path);
     if (!stream)
@@ -30,7 +30,7 @@ bool ReadCsv(const std::string &path, std::vector<data> &dataVec)
         csvio::dataFields curField = ano;
         // divindo a linha entre virgulas
         // result: cada item separado por virgula
-        while (std::getline(line, result, ','))
+        while (std::getline(line, result, separator))
         {
             switch (curField)
             {

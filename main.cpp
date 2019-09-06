@@ -10,8 +10,11 @@
 
 #include <iostream>
 #include <vector>
+#include "bubble.hpp"
 #include "data.hpp"
 #include "readfl.hpp"
+
+#define SEPARATOR ';'
 
 void printField(const std::vector<csvio::index> &index);
 
@@ -31,7 +34,7 @@ int main(int argc, char *argv[])
 
     if (argc > 2)
     {
-        hasFile = csvio::ReadCsv(argv[1], dataVec);
+        hasFile = csvio::ReadCsv(argv[1], dataVec, SEPARATOR);
     }
     // basic REPL menu
     do
@@ -60,7 +63,7 @@ int main(int argc, char *argv[])
         case 'a':
             std::cout << "Digite o caminho para o arquivo: ";
             std::cin >> filePath;
-            hasFile = csvio::ReadCsv(filePath, dataVec);
+            hasFile = csvio::ReadCsv(filePath, dataVec, SEPARATOR);
             break;
         case 'c':
             if (hasFile)
@@ -86,7 +89,7 @@ int main(int argc, char *argv[])
         case 'b':
             if (hasField)
             {
-                std::cout << "Ainda Não implementado.";
+                csvio::bubble(index);
             }
             else
             {

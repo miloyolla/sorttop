@@ -13,6 +13,9 @@ DATA: 01/03/2019
 #include <vector>
 #include <string.h>
 
-void bubble(std::vector<> &index);
+namespace csvio
+{
+void bubble(std::vector<index> &index);
+}
 
 #endif

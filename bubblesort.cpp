@@ -7,8 +7,10 @@ Rodrigo Chueri
 DATA: 01/03/2019
 */
 #include "bubble.hpp"
+namespace csvio 
+{
 
-void bubble(std::vector<> &index)
+void bubble(std::vector<csvio::index> &index)
 {
     bool troca;
 
@@ -28,4 +30,5 @@ void bubble(std::vector<> &index)
             }
         }
     }
+}
 }

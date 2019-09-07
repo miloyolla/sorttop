@@ -14,9 +14,9 @@
 #include <vector>
 #include <string.h>
 
-namespace csvio
+namespace sort
 {
-void bubble(std::vector<index> &index);
+void bubble(std::vector<csvio::index> &index);
 }
 
 #endif

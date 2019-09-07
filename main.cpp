@@ -15,7 +15,7 @@
 #include "data.hpp"
 #include "readfl.hpp"
 
-#define SEPARATOR ';'
+#define SEPARATOR ','
 
 void printField(const std::vector<csvio::index> &index);
 
@@ -90,7 +90,7 @@ int main(int argc, char *argv[])
         case 'b':
             if (hasField)
             {
-                csvio::bubble(index);
+                sort::bubble(index);
             }
             else
             {

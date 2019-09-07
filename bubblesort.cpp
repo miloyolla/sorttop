@@ -8,7 +8,7 @@
 /////////////////////////////////////////////////////
 
 #include "bubble.hpp"
-namespace csvio 
+namespace sort 
 {
 
 void bubble(std::vector<csvio::index> &index)

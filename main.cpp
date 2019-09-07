@@ -9,6 +9,7 @@
 
 #include <iostream>
 #include <vector>
+#include <time.h>
 #include "data.hpp"
 #include "readfl.hpp"
 #include "bubble.hpp"
@@ -18,13 +19,16 @@
 
 void printField(const std::vector<csvio::index> &index);
 
+void printFile(const std::vector<csvio::index> &index, const std::vector<csvio::data> &dataVec);
+
 bool chooseField(std::vector<csvio::index> &indexVec, const std::vector<csvio::data> &dataVec);
 
 int main(int argc, char *argv[])
 {
     std::vector<csvio::data> dataVec;
     std::vector<csvio::index> index;
-
+    clock_t tStart;
+    clock_t tEnd;
     char option;
     bool reploop = true;
     bool hasField = false;
@@ -81,7 +85,11 @@ int main(int argc, char *argv[])
         case 'm':
             if (hasField)
             {
+                tStart = clock();
                 sort::merge(index);
+                tEnd = clock();
+                std::cout
+                    << "Time taken: " << double(tEnd - tStart) / CLOCKS_PER_SEC << 's' << std::endl;
             }
             else
             {
@@ -91,7 +99,11 @@ int main(int argc, char *argv[])
         case 'b':
             if (hasField)
             {
+                tStart = clock();
                 sort::bubble(index);
+                tEnd = clock();
+                std::cout
+                    << "Time taken: " << double(tEnd - tStart) / CLOCKS_PER_SEC << 's'<<  std::endl;
             }
             else
             {

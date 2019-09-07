@@ -7,8 +7,6 @@
 //    DATA: 06/09/2019
 /////////////////////////////////////////////////////
 
-
-
 #include <iostream>
 #include <vector>
 #include "data.hpp"
@@ -20,7 +18,7 @@
 
 void printField(const std::vector<csvio::index> &index);
 
-bool chooseField(std::vector<csvio::index> &indexVec , const std::vector<csvio::data> &dataVec);
+bool chooseField(std::vector<csvio::index> &indexVec, const std::vector<csvio::data> &dataVec);
 
 int main(int argc, char *argv[])
 {
@@ -52,6 +50,8 @@ int main(int argc, char *argv[])
                   << std::endl
                   << "b - ordenar com bubble sort"
                   << std::endl
+                  << "v - imprimir campo de ordenação."
+                  << std::endl
                   << "p - imprimir o arquivo"
                   << std::endl
                   << "s - sair."
@@ -70,13 +70,13 @@ int main(int argc, char *argv[])
         case 'c':
             if (hasFile)
             {
-            hasField = chooseField(index, dataVec);
+                hasField = chooseField(index, dataVec);
             }
             else
             {
-            std::cout << "nenhum arquivo lido. " << std::endl;
+                std::cout << "nenhum arquivo lido. " << std::endl;
             }
-        
+
             break;
         case 'm':
             if (hasField)
@@ -98,7 +98,7 @@ int main(int argc, char *argv[])
                 std::cout << "Nenhum campo selecionado.";
             }
             break;
-        case 'p':
+        case 'v':
             if (hasField)
             {
                 printField(index);
@@ -107,7 +107,17 @@ int main(int argc, char *argv[])
             {
                 std::cout << "Nenhum campo selecionado.";
             }
-            
+            break;
+        case 'p':
+            reploop = false;
+            if (hasField)
+            {
+                printFile(index, dataVec);
+            }
+            else
+            {
+                std::cout << "Nenhum campo selecionado.";
+            }
             break;
         case 's':
             reploop = false;
@@ -120,12 +130,10 @@ int main(int argc, char *argv[])
         std::cout << " " << std::endl;
     } while (reploop);
 
-
-
     return 0;
 }
 // menu para escolher o campo de ordenaçao
-bool chooseField(std::vector<csvio::index> &indexVec , const std::vector<csvio::data> &dataVec)
+bool chooseField(std::vector<csvio::index> &indexVec, const std::vector<csvio::data> &dataVec)
 {
     bool reploop = true;
     char option;
@@ -223,7 +231,6 @@ bool chooseField(std::vector<csvio::index> &indexVec , const std::vector<csvio::
             indexVec.clear();
             fillIndex(indexVec, dataVec, campo);
             break;
-
         case 's':
             return false;
 
@@ -236,12 +243,36 @@ bool chooseField(std::vector<csvio::index> &indexVec , const std::vector<csvio::
     return true;
 }
 
+void printFile(const std::vector<csvio::index> &index, const std::vector<csvio::data> &dataVec)
+{
+    for (int i; i < index.size(); i++)
+    {
+        std::cout << dataVec[index[i].index].ano
+                  << SEPARATOR
+                  << dataVec[index[i].index].statusProc
+                  << SEPARATOR
+                  << dataVec[index[i].index].superintend
+                  << SEPARATOR
+                  << dataVec[index[i].index].numeroProc
+                  << SEPARATOR
+                  << dataVec[index[i].index].autoInfra
+                  << SEPARATOR
+                  << dataVec[index[i].index].cpfCnpj
+                  << SEPARATOR
+                  << dataVec[index[i].index].razSocial
+                  << SEPARATOR
+                  << dataVec[index[i].index].vencimento
+                  << SEPARATOR
+                  << dataVec[index[i].index].valorMultaApl
+                  << std::endl;
+    }
+}
+
 void printField(const std::vector<csvio::index> &index)
 {
     std::cout << "linhas lidas: " << index.size() << std::endl;
     for (int i = 0; i < index.size(); i++)
     {
-        std::cout <<index[i].index << " - " << index[i].campo << std::endl;
+        std::cout << index[i].index << " - " << index[i].campo << std::endl;
     }
-    
 }

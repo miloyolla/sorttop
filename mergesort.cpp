@@ -77,11 +77,8 @@ void mergeSort(std::vector<csvio::index> &index, int l, int r)
     if (l < r) 
     { 
 
-        // Same as (l+r)/2, but avoids overflow for 
-        // large l and h 
-        int m = l+(r-l)/2; 
+        int m = (l+r)/2; 
   
-        // Sort first and second halves 
         mergeSort(index, l, m); 
         mergeSort(index, m+1, r); 
   

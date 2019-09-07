@@ -8,18 +8,17 @@
 /////////////////////////////////////////////////////
 
 #include "bubble.hpp"
-namespace sort 
+#include <stdio.h>
+namespace sort
 {
 
 void bubble(std::vector<csvio::index> &index)
 {
-    bool troca;
-
+    bool troca = true;
+    csvio::index aux;
     while (troca == true)
     {
         troca = false;
-        csvio::index aux;
-
         for (int i = 0; i <= index.size(); i++)
         {
             if (index[i].campo > index[i + 1].campo)
@@ -32,4 +31,4 @@ void bubble(std::vector<csvio::index> &index)
         }
     }
 }
-}
+} // namespace sort

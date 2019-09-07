@@ -11,11 +11,12 @@
 
 #include <iostream>
 #include <vector>
-#include "bubble.hpp"
 #include "data.hpp"
 #include "readfl.hpp"
+#include "bubble.hpp"
+#include "mergesort.hpp"
 
-#define SEPARATOR ';'
+#define SEPARATOR ','
 
 void printField(const std::vector<csvio::index> &index);
 
@@ -80,7 +81,7 @@ int main(int argc, char *argv[])
         case 'm':
             if (hasField)
             {
-                std::cout << "Ainda Não implementado.";
+                sort::merge(index);
             }
             else
             {
@@ -90,7 +91,7 @@ int main(int argc, char *argv[])
         case 'b':
             if (hasField)
             {
-                csvio::bubble(index);
+                sort::bubble(index);
             }
             else
             {

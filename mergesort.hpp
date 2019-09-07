@@ -7,16 +7,16 @@
 //    DATA: 06/09/2019
 /////////////////////////////////////////////////////
 
-#ifndef BUBBLE_SORT
-#define BUBBLE_SORT
+#ifndef MERGE_SORT
+#define MERGE_SORT
 
 #include "data.hpp"
+#include <string>
 #include <vector>
-#include <string.h>
 
 namespace sort
 {
-void bubble(std::vector<csvio::index> &index);
+void merge(std::vector<csvio::index> &index);
 }
 
 #endif

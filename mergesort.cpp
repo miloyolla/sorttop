@@ -15,6 +15,10 @@
 
 namespace sort
 {
+
+/*
+    Função de merge
+*/
 void merger(std::vector<csvio::index> &index , int l, int m, int r) 
 { 
     int i, j, k; 
@@ -22,19 +26,18 @@ void merger(std::vector<csvio::index> &index , int l, int m, int r)
     int n1 = m - l + 1; 
     int n2 =  r - m; 
   
-    /* create temp arrays */
     csvio::index L[n1], R[n2]; 
   
-    /* Copy data to temp arrays L[] and R[] */
+ 
     for (i = 0; i < n1; i++) 
         L[i] = index[l + i]; 
     for (j = 0; j < n2; j++) 
         R[j] = index[m + 1+ j]; 
   
-    /* Merge the temp arrays back into arr[l..r]*/
-    i = 0; // Initial index of first subarray 
-    j = 0; // Initial index of second subarray 
-    k = l; // Initial index of merged subarray 
+   
+    i = 0; 
+    j = 0; 
+    k = l; 
     while (i < n1 && j < n2) 
     { 
         if (L[i].campo <= R[j].campo) 
@@ -50,8 +53,6 @@ void merger(std::vector<csvio::index> &index , int l, int m, int r)
         k++; 
     } 
   
-    /* Copy the remaining elements of L[], if there 
-       are any */
     while (i < n1) 
     { 
         index[k] = L[i]; 
@@ -59,8 +60,6 @@ void merger(std::vector<csvio::index> &index , int l, int m, int r)
         k++; 
     } 
   
-    /* Copy the remaining elements of R[], if there 
-       are any */
     while (j < n2) 
     { 
         index[k] = R[j]; 
@@ -69,8 +68,9 @@ void merger(std::vector<csvio::index> &index , int l, int m, int r)
     } 
 } 
   
-/* l is for left index and r is right index of the 
-   sub-array of arr to be sorted */
+/* 
+    Função de merge sort recursiva
+*/
 void mergeSort(std::vector<csvio::index> &index, int l, int r) 
 { 
     
@@ -88,6 +88,9 @@ void mergeSort(std::vector<csvio::index> &index, int l, int r)
         merger(index, l, m, r); 
     } 
 } 
+/*
+wrapper para chamar o merge sort passando apenas o index array
+*/
 
 void merge(std::vector<csvio::index> &index)
 {

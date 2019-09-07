@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
 
     std::string filePath;
 
-    if (argc > 2)
+    if (argc == 2)
     {
         hasFile = csvio::ReadCsv(argv[1], dataVec, SEPARATOR);
     }
